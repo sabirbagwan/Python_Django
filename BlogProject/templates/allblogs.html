@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container name-main-body">
+      <br>
+      <div class"container">
+        <h2  class="text-center">All Blogs</h2>  
+      </div>
+
+      {% comment %} <div class="row"> {% endcomment %}
+        <!-- Latest Posts -->
+        <br>
+        {% comment %} <main class="posts-listing col-lg-8">  {% endcomment %}
+        {% comment %} <main class ="coloumn"> {% endcomment %}
+          <div class="container">
+            <div class="row">
+              <!-- post -->
+              {% for post in allposts %}
+              <div class="post col-xl-4">
+                <div class="post-thumbnail"><a href="/post/{{post.url}}"><img src="/media/{{ post.image }}" alt="..." class="img-fluid"></a></div>
+                <div class="post-details">
+                  <div class="post-meta d-flex justify-content-between">
+                    {% comment %} <div class="date meta-last">20 May | 2016</div> {% endcomment %}
+                    {% comment %} <div class="category"> {% endcomment %}
+                    {% comment %} {% for cat in post.categories.all %}
+                    <a href="#">{{ cat }}</a>
+                    {% endfor %} {% endcomment %}
+                    {% comment %} </div> {% endcomment %}
+                  </div><a href="/post/{{post.url}}">
+                    <h3 class="h4">{{ post.title }}</h3></a>
+                  {% comment %} <p class="text-muted">{{ post.overview }}</p> {% endcomment %}
+                  {% comment %} <footer class="post-footer d-flex align-items-center"> {% endcomment %}
+                    {% comment %} <a href="#" class="author d-flex align-items-center flex-wrap"> {% endcomment %}
+                        {% comment %} <div class="date"> {{ post.add_date|timesince }} ago</div> {% endcomment %}
+                        <div class="date"> {{ post.add_date }}</div>
+                      {% comment %} <div class="avatar"><img src="{{ post.author.profile_picture.url }}" alt="..." class="img-fluid"></div> {% endcomment %}
+                      {% comment %} <div class="title"><span>{{ post.author.user.username }}</span></div> {% endcomment %}
+                    </a>
+                    {% comment %} <div class="date"><i class="icon-clock"></i>{{ post.timestamp|timesince }} ago</div> {% endcomment %}
+                    {% comment %} <div class="comments meta-last"><i class="icon-comment"></i>{{ post.comment_count }}</div> {% endcomment %}
+                  {% comment %} </footer> {% endcomment %}
+                  <br>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            {% comment %} <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-template d-flex justify-content-center">
+                {% if queryset.has_previous %}                
+                <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                {% endif %}
+                <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.number }}" class="page-link active">{{ queryset.number }}</a></li>
+                {% if queryset.has_next %}
+                <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                {% endif %}
+              </ul>
+            </nav>
+
+            {% if is_paginated %}
+            
+            <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-template d-flex justify-content-center">
+                {% if page_obj.has_previous %}                
+                <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                {% endif %}
+                <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.number }}" class="page-link active">{{ page_obj.number }}</a></li>
+                {% if page_obj.has_next %}
+                <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                {% endif %}
+              </ul>
+            </nav>
+            
+            {% endif %} {% endcomment %}
+          </div>
+        </main>
+        {% comment %} {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %} {% endcomment %}
+      </div>
+    </div>
+
+{% endblock content %}

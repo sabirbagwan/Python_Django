@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {% load social_share %} {% endcomment %}
+{% block content %}
+
+<style>
+  .post-body img {
+    width: 100%;
+  }
+</style>
+
+    <div class="container name-main-body">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="post blog-post col-lg-8"> 
+          <div class="container">
+            <div class="post-single">
+              <div class="post-thumbnail"><img src="/media/{{ post.image }}" alt="..." class="img-fluid"></div>
+              <div class="post-details">
+                <br>
+                <h1>{{ post.title }}</h1>
+                <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
+                    <div class="title"><span>{{ post.author.user.username }}</span></div></a>
+                  <div class="d-flex align-items-center flex-wrap">       
+                    <div class="date"><i class="icon-clock"></i> {{ post.add_date|timesince }} ago</div>
+                  </div>
+                </div>
+                <div class="post-body" style="text-align: justify;">
+                  {{ post.content | safe }}
+                </div>
+              </div>
+            </div>
+
+          <br>
+          <br>
+          <div class ="container">
+          <div class="row">
+            <!-- Latest Posts -->
+            <div class="post blog-post col-lg-10"> 
+                <div class="fb-like" data-href="http://127.0.0.1:8000" data-width="" data-layout="button" data-action="like" data-size="large" data-share="true"></div>
+          <br>
+                <div class="fb-comments" data-href="http://127.0.0.1:8000/" data-numposts="1"></div>
+                {% comment %} <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div> {% endcomment %}
+          </div>
+        </div>
+        </div>
+      </div>
+
+        </main>
+        {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}        
+      </div>
+    </div>
+{% endblock content %}

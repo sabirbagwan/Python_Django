@@ -1,0 +1,50 @@
+/* your styles go here */
+@import url('https://fonts.googleapis.com/css2?family=Smooch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+
+.name-main-name {
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Smooch', cursive; */
+    /* font-family: 'Old Standard TT', serif; */
+    font-family: 'Playfair Display', serif;
+    /* font-family: 'Grape Nuts', cursive; */
+    /* font-family: 'Dancing Script', cursive; */
+    /* font-family: 'Caveat', cursive; */
+    color: black;
+    font-size: 22px;
+}
+
+.name-main-body {
+    font-family: 'Playfair Display', serif;
+    color: black;
+    font-size: 19px;
+}
+
+.name-main-contact{
+    font-family: 'Playfair Display', serif;
+    color: black;
+    font-size: 14px;
+}
+
+.name-main-hf {
+    /* font-family: 'Smooch', cursive; */
+    font-family: 'Playfair Display', serif;
+    color: black;
+    font-size: 18px;
+}
+
+
+.footer-social li {
+    padding: 0 8px;
+}
+
+.main-footer {
+    margin-top: 40px;
+    padding: 30px;
+    /* margin-bottom: 20px; */
+}

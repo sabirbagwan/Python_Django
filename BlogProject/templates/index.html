@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class = "name-main-body">
+    <!-- Hero Section-->
+    <section style="background: url({% static 'img/hero.jpg' %}); background-size: cover; background-position: center center" class="hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            {% comment %} <h1 class = "name-main">Sabir Bagwan's Blog</h1> {% endcomment %}
+          </div>
+      </div>
+    </section>
+    <!-- Intro Section-->
+    <section class="intro">
+      <div class="container name-main-body">
+        <div class="row">
+          <div class="col-lg-12">
+            {% comment %} <h2 class="h3">Sabir Bagwan's Blog</h2> {% endcomment %}
+            <p class="text-big" style="text-align: justify;">Text</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="featured-posts no-padding-top">
+      <div class="container">
+        <div class"container">
+          <h2  class="text-center">Featured Blogs</h2>
+          <br>  
+          <br>
+        </div>
+        <!-- Post-->
+        {% for obj in featured %}
+            <div class="row d-flex align-items-stretch">
+
+              {% if not forloop.first and not forloop.last %}
+                <div class="image col-lg-5"><img src="/media/{{ obj.image }}" alt="..."></div>
+              
+              {% endif %}
+              <div class="text col-lg-7">
+                      <div class="d-flex align-items-center">
+                        {% comment %} <p>{{ obj.content|truncatechars:200 }}</p>  {% endcomment %}
+
+                        <div class="content text">
+                            <a href="/post/{{obj.url}}"
+                              <h2 class="h4">{{ obj.title }}</h2>
+                              </a>
+                          {% comment %} </header> {% endcomment %}
+                          <div class = "text"><a href="/post/{{obj.url}}">
+                            <p>{{ obj.content|striptags|safe|linebreaks|truncatewords:15 }}</p> 
+                          </a>
+                          </div>
+                          {% comment %} <footer class="post-footer d-flex align-items-center"><a href="/post" class="author d-flex align-items-center flex-wrap"> {% endcomment %}
+                              <div class="title"><span>{{ obj.add_date }}</span></div></a>
+                          {% comment %} </footer> {% endcomment %}
+                        </div>
+                      </div>
+              </div>
+      
+              {% if forloop.first or forloop.last %}
+                <div class="image col-lg-5"><img src="/media/{{ obj.image }}" alt="..."></div>
+              {% endif %}
+ 
+            </div>
+            <br>
+            <br>
+            <br>
+            {% endfor %}
+      </div>
+
+    </section>
+
+
+    <!-- Divider Section-->
+    <section style="background: url({% static 'img/divider.jpg' %}); background-size: cover; background-position: center bottom" class="divider">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7" style="text-align: justify;">
+            <h2> text</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    
+
+
+
+    <!-- Latest Posts -->
+    <section class="latest-posts"> 
+      <div class="container">
+        <header> 
+          <h2  class="text-center">Latest Blogs</h2>
+        </header>
+        <div class="row">
+          {% for obj in latests %}
+          <div class="post col-md-4">
+            <div class="post-thumbnail"><a href="/post/{{obj.url}}"><img src="/media/{{ obj.image }}" alt="..." class="img-fluid"></a></div>
+            <div class="post-details">
+              <div class="post-meta d-flex justify-content-between">
+                <div class="date">{{ obj.timestamp }}</div>
+              </div><a href="/post/{{obj.url}}">
+                <h3 class="h4">{{ obj.title }}</h3></a>
+              {% comment %} <p class="text-muted">{{ obj.overview|linebreaks|truncatechars:200 }}</p> {% endcomment %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class = "text-center">
+        <a href="/allblogs" class="hero-link">All Blogs</a>
+        </div>
+      </div>
+    </section>
+<div>
+{% endblock content %}
